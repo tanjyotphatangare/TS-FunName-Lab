@@ -67,15 +67,15 @@
 
 <body>
 
-<h1 id="text">Enter your name</h1>
+<h1 id="text">Enter your beautiful name🥱</h1>
 
 <form onsubmit="showInput(); return false;">
   <input type="text" id="inputBox" placeholder="Type your name">
   <br><br>
 
-  <button type="submit">Submit</button>
-  <button type="button" onclick="funnyName()">Funny</button>
-  <button type="button" onclick="stylishName()">Style</button>
+  <button type="submit">Submit👍</button>
+  <button type="button" onclick="funnyName()">Funny🤣</button>
+  <button type="button" onclick="stylishName()">Style😎</button>
 </form>
 
 <p id="message"></p>
@@ -86,7 +86,7 @@
 window.onload = function() {
   let saved = localStorage.getItem("name");
   if (saved) {
-    document.getElementById("text").innerHTML = "Welcome back, " + saved + " you are look good today ";
+    document.getElementById("text").innerHTML = "Welcome back, " + saved + " you are look good today 🤗";
   }
 };
 
@@ -96,7 +96,7 @@ function randomMessage(name) {
     name + " is awesome ",
     name + " is a future developer ",
     name + " is super cool ",
-    "Hey " + name + ", keep shining �"
+    "Hey " + name + ", keep shining ¨"
   ];
   return messages[Math.floor(Math.random() * messages.length)];
 }
@@ -126,7 +126,7 @@ function funnyName() {
   let name = document.getElementById("inputBox").value;
   if (name === "") return;
 
-  let funny = " Hey" + name + " your name i don't like it ";
+  let funny = " Hey" + name + " your name i don't like it🤮🤢 ";
   document.getElementById("text").innerHTML = funny;
   animateText();
 }
@@ -136,7 +136,7 @@ function stylishName() {
   let name = document.getElementById("inputBox").value;
   if (name === "") return;
 
-  let styled = "Hey," + name.toUpperCase() + " Are you trying to be cool ";
+  let styled = "Hey," + name.toUpperCase() + " Are you trying to be cool🤣";
   document.getElementById("text").innerHTML = styled;
   animateText();
 }
@@ -165,8 +165,8 @@ function confettiEffect() {
 
 </script>
 
-<p>Hi  user  don't take it seriously it just for fun  so share this with you friend and family to let them fun
-and in few days we are going to add more thing for entertainment  so stay with us and follow us on insta for website related update  </p>
+<p>Hi  user 👋 don't take it seriously it just for fun 🤗 so share this with you friend and family to let them fun
+and in few days we are going to add more thing for entertainment 😜 so stay with us and follow us on insta for website related update 😀 </p>
 
 <p> insta:-https://www.instagram.com/ts_edushare?igsh=MWx6ZmdxZjFzbjhkMQ==
  
