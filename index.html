@@ -1,102 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fun Name App</title>
+  <title>Nameify</title>
+
+  <!-- ✅ Mobile responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
-      text-align: center;
+      margin: 0;
+      padding: 20px;
       font-family: sans-serif;
+      text-align: center;
       background: linear-gradient(to right, #74ebd5, #acb6e5);
-      margin-top: 100px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     h1 {
-      transition: all 0.5s ease;
+      font-size: 20px;
     }
 
     input {
-      padding: 10px;
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
       border-radius: 8px;
-      border: none;
+      border: 1px solid #ccc;
       font-size: 16px;
     }
 
     button {
-      padding: 10px 15px;
+      padding: 10px;
       margin: 5px;
       border: none;
       border-radius: 8px;
       background-color: #333;
       color: white;
       cursor: pointer;
-      transition: 0.3s;
+      width: 30%;
     }
 
     button:hover {
-      transform: scale(1.1);
       background-color: #555;
     }
 
     .animate {
-      animation: fadeIn 1s ease;
+      animation: fadeIn 0.8s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .confetti {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background: red;
-      top: 0;
-      animation: fall 3s linear infinite;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(100vh);
-      }
+    p {
+      font-size: 14px;
+      margin-top: 15px;
     }
   </style>
-
 </head>
 
 <body>
 
-<h1 id="text">Enter your beautiful name🥱</h1>
+<div class="container">
 
-<form onsubmit="showInput(); return false;">
-  <input type="text" id="inputBox" placeholder="Type your name">
-  <br><br>
+  <h1 id="text">Enter your name 👇</h1>
 
-  <button type="submit">Submit👍</button>
-  <button type="button" onclick="funnyName()">Funny🤣</button>
-  <button type="button" onclick="stylishName()">Style😎</button>
-</form>
+  <form onsubmit="showInput(); return false;">
+    <input type="text" id="inputBox" placeholder="Type your name">
 
-<p id="message"></p>
+    <br><br>
+
+    <button type="submit">Submit 👍</button>
+    <button type="button" onclick="funnyName()">😂 Funny</button>
+    <button type="button" onclick="stylishName()">😎 Style</button>
+    <button type="button" onclick="pitchingline()">😊line</button>
+  </form>
+
+  <button onclick="clearName()">Reset 🔄</button>
+
+  <p id="message"></p>
+
+  <p>
+    This website is made for fun 😄<br>
+    Share it with your friends and enjoy 🎉
+  </p>
+
+</div>
 
 <script>
 
-// Load saved name
-window.onload = function() {
-  let saved = localStorage.getItem("name");
-  if (saved) {
-    document.getElementById("text").innerHTML = "Welcome back, " + saved + " you are look good today 🤗";
-  }
-};
-
-// Greeting generator
+// Greeting messages
 function randomMessage(name) {
   let messages = [
-    name + " is awesome ",
-    name + " is a future developer ",
-    name + " is super cool ",
-    "Hey " + name + ", keep shining ¨"
+    name + " is awesome 😎",
+    name + " is a future developer 🚀",
+    name + " looks great today ✨",
+    "Hey " + name + ", keep shining 🔥"
   ];
   return messages[Math.floor(Math.random() * messages.length)];
 }
@@ -109,36 +117,65 @@ function showInput() {
   if (userText === "") {
     text.innerHTML = "Please enter your name";
   } else {
-    text.innerHTML = "Hello, " + userText + " how are you ";
+    text.innerHTML = "Hello, " + userText + " 😄";
     document.getElementById("message").innerHTML = randomMessage(userText);
 
     // Save name
     localStorage.setItem("name", userText);
-
-    confettiEffect();
   }
 
   animateText();
 }
 
-// Funny mode
+// Funny
 function funnyName() {
   let name = document.getElementById("inputBox").value;
-  if (name === "") return;
 
-  let funny = " Hey" + name + " your name i don't like it🤮🤢 ";
-  document.getElementById("text").innerHTML = funny;
+  if (name === "") {
+    document.getElementById("text").innerHTML = "Enter your name first 😅";
+    return;
+  }
+
+  let jokes = [
+    "Hey " + name + ", are you WiFi? Because I'm feeling a connection 📶😂",
+    "Hey " + name + ", are you pizza? Because I can’t resist you 🍕😂",
+    name + ", you’re not lazy… just on energy-saving mode 😴😂",
+    "Hey " + name + ", are you Google? Because you have everything I’m searching for 🤓😂",
+    "Hey " + name + ", are you fries? Because I want you with everything 🍟😂"
+  ];
+
+  let random = jokes[Math.floor(Math.random() * jokes.length)];
+
+  document.getElementById("text").innerHTML = random;
+
   animateText();
 }
 
-// Stylish name
+
+// Stylish
 function stylishName() {
   let name = document.getElementById("inputBox").value;
   if (name === "") return;
 
-  let styled = "Hey," + name.toUpperCase() + " Are you trying to be cool🤣";
-  document.getElementById("text").innerHTML = styled;
+  document.getElementById("text").innerHTML =  "Hey " + name.toUpperCase() + " 😎, you don’t need filters… you’re already premium ✨"
   animateText();
+}
+
+//line
+function pitchingline() {
+let name = document.getElementById("inputBox").value;
+if (name === "") return;
+
+document.getElementById("text").innerHTML = " hey " + name + " are you a coffee ? because you are so hot and sweet 😋 ";
+animateText();
+}
+
+// Reset
+function clearName() {
+  localStorage.removeItem("name");
+  document.getElementById("text").innerHTML = "Enter your name 👇";
+  document.getElementById("message").innerHTML = "";
+  document.getElementById("inputBox").value = "";
 }
 
 // Animation
@@ -149,29 +186,7 @@ function animateText() {
   text.classList.add("animate");
 }
 
-// Confetti
-function confettiEffect() {
-  for (let i = 0; i < 30; i++) {
-    let conf = document.createElement("div");
-    conf.classList.add("confetti");
-    conf.style.left = Math.random() * 100 + "vw";
-    conf.style.backgroundColor = "hsl(" + Math.random() * 360 + ",100%,50%)";
-    conf.style.animationDuration = (Math.random() * 2 + 2) + "s";
-    document.body.appendChild(conf);
-
-    setTimeout(() => conf.remove(), 3000);
-  }
-}
-
 </script>
-
-<p>Hi  user 👋 don't take it seriously it just for fun 🤗 so share this with you friend and family to let them fun
-and in few days we are going to add more thing for entertainment 😜 so stay with us and follow us on insta for website related update 😀 </p>
-
-<p> insta:-https://www.instagram.com/ts_edushare?igsh=MWx6ZmdxZjFzbjhkMQ==
- 
- 
-
 
 </body>
 </html>
